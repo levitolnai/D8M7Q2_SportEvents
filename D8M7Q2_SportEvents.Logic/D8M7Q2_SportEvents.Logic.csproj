@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\D8M7Q2_SportEvents.Data\D8M7Q2_SportEvents.Data.csproj" />
     <ProjectReference Include="..\D8M7Q2_SportEvents.Entities\D8M7Q2_SportEvents.Entities.csproj" />
