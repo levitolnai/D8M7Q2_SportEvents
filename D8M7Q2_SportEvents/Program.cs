@@ -1,6 +1,8 @@
 using D8M7Q2_SportEvents.Data;
+using D8M7Q2_SportEvents.Endpoint.Helpers;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -25,7 +27,19 @@ namespace D8M7Q2_SportEvents
             });
 
 
-            builder.Services.AddControllers();
+            builder.Services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
+
+            builder.Services.AddControllers(opt =>
+            {
+                opt.Filters.Add<ExceptionFilter>();
+                opt.Filters.Add<ValidationFilterAttribute>();
+            });
+
+
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

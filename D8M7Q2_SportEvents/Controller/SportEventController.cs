@@ -19,19 +19,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
-        public IActionResult AddSportEvent(SportEventCreateUpdateDto dto)
+        public void AddSportEvent(SportEventCreateUpdateDto dto)
         {
-            try
-            {
-                logic.AddSportEvent(dto);
-            }
-            catch (Exception e)
-            {
-                return BadRequest(new ErrorModel(e.Message));
-            }
 
-            return Ok();
-            
+            logic.AddSportEvent(dto);
+
         }
 
         [HttpGet]
