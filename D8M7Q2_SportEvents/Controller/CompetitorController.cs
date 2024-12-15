@@ -1,5 +1,6 @@
 ﻿using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities.Dto.Competitor;
+using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,6 +28,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
             var user = await userManager.GetUserAsync(User);
 
             logic.AddCompetitor(dto, user.Id);
+        }
+        [HttpDelete("{id}")]
+        public void DeleteCompetitor(string id)
+        {
+            logic.DeleteCompetitor(id);
         }
     }
 }

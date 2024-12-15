@@ -49,6 +49,10 @@ namespace D8M7Q2_SportEvents.Logic.Logic
         public SportEventViewDto GetSportEvent(string id)
         {
             var model = repo.FindById(id);
+            if (model == null)
+            {
+                throw new InvalidOperationException("SportEvent not found.");
+            }
             return dtoProvider.Mapper.Map<SportEventViewDto>(model);
         }
     }

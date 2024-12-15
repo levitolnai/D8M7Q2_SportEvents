@@ -50,7 +50,15 @@ namespace D8M7Q2_SportEvents.Logic.Helpers
                 .AfterMap((src, dest) =>
                 {
                     var user = userManager.Users.First(u => u.Id == src.UserId);
-                    dest.UserFullName = user.LastName! + " " + user.FirstName;
+                    if (user != null)
+                    {
+                        dest.UserFullName = user.LastName + " " + user.FirstName;
+                    }
+                    else
+                    {
+                        dest.UserFullName = "Unknown User";
+                    }
+                    //dest.UserFullName = user.LastName! + " " + user.FirstName;
                 });
             });
 

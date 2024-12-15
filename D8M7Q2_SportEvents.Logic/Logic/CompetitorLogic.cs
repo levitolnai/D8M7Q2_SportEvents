@@ -1,6 +1,7 @@
 ﻿using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.Competitor;
+using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using System;
 using System.Collections.Generic;
@@ -23,11 +24,14 @@ namespace D8M7Q2_SportEvents.Logic.Logic
 
         public void AddCompetitor(CompetitorCreateDto dto, string userId)
         {
+            ;
             int competitorCount = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Count();
+            var s = repo.GetAll();
             int competitorLimit = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Select(x => x.SportEvent.CompetitorLimit).FirstOrDefault();
             var model = dtoProvider.Mapper.Map<Competitor>(dto);
             model.UserId = userId;
-            if (competitorCount < competitorLimit)
+            //repo.Create(model);
+            if (competitorCount <= competitorLimit)
             {
                 repo.Create(model);
             }
@@ -38,5 +42,10 @@ namespace D8M7Q2_SportEvents.Logic.Logic
 
 
         }
+        public void DeleteCompetitor(string id)
+        {
+            repo.DeleteById(id);
+        }
+
     }
 }

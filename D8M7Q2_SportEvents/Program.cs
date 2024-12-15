@@ -55,8 +55,8 @@ namespace D8M7Q2_SportEvents
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = "movieclub.com",
-                    ValidIssuer = "movieclub.com",
+                    ValidAudience = "sportevent.com",
+                    ValidIssuer = "sportevent.com",
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("NagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcs"))
                 };
             }); ;

@@ -49,7 +49,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public SportEventViewDto GetSportEvent(string id)
         {
             return logic.GetSportEvent(id);
