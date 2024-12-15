@@ -39,5 +39,8 @@ namespace D8M7Q2_SportEvents.Entities
 
         [StringLength(15)]
         public string Phone { get; set; }
+
+        [StringLength(50)]
+        public string UserId { get; set; }
     }
 }

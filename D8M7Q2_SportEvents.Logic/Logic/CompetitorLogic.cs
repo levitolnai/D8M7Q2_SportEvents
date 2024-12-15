@@ -21,11 +21,12 @@ namespace D8M7Q2_SportEvents.Logic.Logic
             this.dtoProvider = dtoProvider;
         }
 
-        public void AddCompetitor(CompetitorCreateDto dto)
+        public void AddCompetitor(CompetitorCreateDto dto, string userId)
         {
             int competitorCount = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Count();
             int competitorLimit = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Select(x => x.SportEvent.CompetitorLimit).FirstOrDefault();
             var model = dtoProvider.Mapper.Map<Competitor>(dto);
+            model.UserId = userId;
             if (competitorCount < competitorLimit)
             {
                 repo.Create(model);

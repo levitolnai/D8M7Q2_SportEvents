@@ -1,6 +1,7 @@
 ﻿using D8M7Q2_SportEvents.Entities.Dto.Competitor;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace D8M7Q2_SportEvents.Endpoint.Controller
@@ -8,19 +9,23 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CompetitorController
+    public class CompetitorController: ControllerBase
     {
         CompetitorLogic logic;
+        UserManager<IdentityUser> userManager;
 
-        public CompetitorController(CompetitorLogic logic)
+        public CompetitorController(CompetitorLogic logic, UserManager<IdentityUser> userManager)
         {
             this.logic = logic;
+            this.userManager = userManager;
         }
 
         [HttpPost]
-        public void AddCompetitor(CompetitorCreateDto dto)
+        public async Task AddCompetitor(CompetitorCreateDto dto)
         {
-            logic.AddCompetitor(dto);
+            var user = await userManager.GetUserAsync(User);
+
+            logic.AddCompetitor(dto, user.Id);
         }
     }
 }

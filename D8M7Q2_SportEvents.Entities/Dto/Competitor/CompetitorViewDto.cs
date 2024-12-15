@@ -11,5 +11,7 @@ namespace D8M7Q2_SportEvents.Entities.Dto.Competitor
         public string Name { get; set; } = "";
         public string Email { get; set; } = "";
         public string Phone { get; set; } = "";
+
+        public string UserFullName { get; set; } = "";
     }
 }
