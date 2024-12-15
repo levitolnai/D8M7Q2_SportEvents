@@ -54,5 +54,19 @@ namespace D8M7Q2_SportEvents.Logic
             old.CompetitorLimit = dto.CompetitorLimit;
             repo.Update(old);
         }
+        public SportEventViewDto GetSportEvent(string id)
+        {
+            var model = repo.FindById(id);
+            return new SportEventViewDto()
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Description,
+                Date = model.Date,
+                Location = model.Location,
+                CompetitorLimit = model.CompetitorLimit,
+                Competitors = model.Competitors
+            };
+        }
     }
 }

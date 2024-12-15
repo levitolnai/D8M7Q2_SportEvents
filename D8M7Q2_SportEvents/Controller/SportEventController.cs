@@ -41,5 +41,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         {
             logic.UpdateSportEvent(id, dto);
         }
+
+        [HttpGet("{id}")]
+        public SportEventViewDto GetSportEvent(string id)
+        {
+            return logic.GetSportEvent(id);
+        }
     }
 }
