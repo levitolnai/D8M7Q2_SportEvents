@@ -14,7 +14,6 @@ namespace D8M7Q2_SportEvents.Data
         {
             this.ctx = ctx;
         }
-
         public void Create(T entity)
         {
             ctx.Set<T>().Add(entity);
