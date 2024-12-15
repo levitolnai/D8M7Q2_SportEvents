@@ -1,4 +1,4 @@
-using D8M7Q2_SportEvents.Entities.Helpers;
+﻿using D8M7Q2_SportEvents.Entities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

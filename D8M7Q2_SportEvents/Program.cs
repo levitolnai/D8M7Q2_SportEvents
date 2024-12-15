@@ -1,9 +1,8 @@
-
 using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.EntityFrameworkCore;
-using MovieClub.Data;
+
 
 namespace D8M7Q2_SportEvents
 {
@@ -17,10 +16,12 @@ namespace D8M7Q2_SportEvents
             builder.Services.AddTransient(typeof(Repository<>));
             builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<SportEventLogic>();
+            builder.Services.AddTransient<CompetitorLogic>();
 
             builder.Services.AddDbContext<SportEventContext>(options =>
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SportEventsDb;Trusted_Connection=True;TrustServerCertificate=True");
+                options.UseLazyLoadingProxies();
             });
 
 

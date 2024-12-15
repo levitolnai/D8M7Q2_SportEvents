@@ -17,7 +17,8 @@ namespace D8M7Q2_SportEvents.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Title = table.Column<string>(type: "nvarchar(60)", maxLength: 60, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Date = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CompetitorLimit = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

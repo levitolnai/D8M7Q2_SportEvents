@@ -3,7 +3,6 @@ using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Mvc;
-using MovieClub.Data;
 
 namespace D8M7Q2_SportEvents.Endpoint.Controller
 {

@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace D8M7Q2_SportEvents.Data.Migrations
 {
     [DbContext(typeof(SportEventContext))]
-    [Migration("20241215134005_SportEvent_update2")]
-    partial class SportEvent_update2
+    [Migration("20241215144836_base")]
+    partial class @base
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,9 @@ namespace D8M7Q2_SportEvents.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "8.0.8")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
