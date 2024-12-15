@@ -1,4 +1,5 @@
 ﻿using D8M7Q2_SportEvents.Entities.Dto.User;
+using D8M7Q2_SportEvents.Logic.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +16,13 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     {
         UserManager<IdentityUser> userManager;
         RoleManager<IdentityRole> roleManager;
+        DtoProvider dtoProvider;
 
-        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
+        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, DtoProvider dtoProvider)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
+            this.dtoProvider = dtoProvider;
         }
 
         [HttpGet("grantadmin/{userid}")]
@@ -42,6 +45,14 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
             await userManager.RemoveFromRoleAsync(user, "Admin");
         }
 
+        [HttpGet]
+        //[Authorize(Roles = "Admin")]
+        public IEnumerable<UserViewDto> GetUsers()
+        {
+            return userManager.Users.Select(t =>
+                dtoProvider.Mapper.Map<UserViewDto>(t)
+            );
+        }
 
         [HttpPost("register")]
         public async Task Register(UserInputDto dto)

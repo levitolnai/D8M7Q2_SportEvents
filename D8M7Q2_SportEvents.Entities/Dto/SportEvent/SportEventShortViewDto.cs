@@ -16,6 +16,6 @@ namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
         public string Location { get; set; } = "";
         public int CompetitorLimit { get; set; }
 
-        //public int CompetitorCount { get; set; }
+        public int CompetitorCount { get; set; }
     }
 }
