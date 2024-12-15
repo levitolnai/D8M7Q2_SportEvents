@@ -13,10 +13,12 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     public class UserController : ControllerBase
     {
         UserManager<IdentityUser> userManager;
+        RoleManager<IdentityRole> roleManager;
 
-        public UserController(UserManager<IdentityUser> userManager)
+        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             this.userManager = userManager;
+            this.roleManager = roleManager;
         }
 
         [HttpPost("register")]
@@ -24,6 +26,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         {
             var user = new IdentityUser(dto.UserName);
             await userManager.CreateAsync(user, dto.Password);
+            if (userManager.Users.Count() == 1)
+            {
+                await roleManager.CreateAsync(new IdentityRole("Admin"));
+                await userManager.AddToRoleAsync(user, "Admin");
+            }
         }
 
         [HttpPost("login")]

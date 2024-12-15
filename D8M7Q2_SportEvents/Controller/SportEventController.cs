@@ -20,7 +20,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void AddSportEvent(SportEventCreateUpdateDto dto)
         {
 
@@ -35,14 +35,14 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void DeleteSportEvent(string id)
         {
             logic.DeleteSportEvent(id);
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public void UpdateSportEvent(string id, [FromBody] SportEventCreateUpdateDto dto)
         {
             logic.UpdateSportEvent(id, dto);
