@@ -1,4 +1,3 @@
-﻿using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities.Helpers;
 using System;
 using System.Collections.Generic;
@@ -6,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MovieClub.Data
+namespace D8M7Q2_SportEvents.Data
 {
     public class Repository<T> where T :class, IIdEntity
     {
