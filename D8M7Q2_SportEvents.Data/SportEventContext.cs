@@ -1,9 +1,10 @@
 ﻿using D8M7Q2_SportEvents.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace D8M7Q2_SportEvents.Data
 {
-    public class SportEventContext: DbContext
+    public class SportEventContext: IdentityDbContext
     {
         public DbSet<SportEvent> SportEvents { get; set; }
 
