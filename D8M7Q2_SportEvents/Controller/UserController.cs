@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using D8M7Q2_SportEvents.Entities.Dto.User;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace D8M7Q2_SportEvents.Endpoint.Controller
 {
@@ -6,12 +8,18 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpPost]
-        public void Register()
+        UserManager<IdentityUser> userManager;
+
+        public UserController(UserManager<IdentityUser> userManager)
         {
-            
+            this.userManager = userManager;
+        }
 
-
+        [HttpPost]
+        public async Task Register(UserCreateDto dto)
+        {
+            var user = new IdentityUser(dto.UserName);
+            await userManager.CreateAsync(user, dto.Password);
         }
     }
 }

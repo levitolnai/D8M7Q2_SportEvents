@@ -2,6 +2,7 @@ using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Endpoint.Helpers;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,22 @@ namespace D8M7Q2_SportEvents
             builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<SportEventLogic>();
             builder.Services.AddTransient<CompetitorLogic>();
+
+            //builder.Services.AddTransient<UserManager<IdentityUser>>();
+
+            builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+                    option =>
+                    {
+                        option.Password.RequireDigit = false;
+                        option.Password.RequiredLength = 6;
+                        option.Password.RequireNonAlphanumeric = false;
+                        option.Password.RequireUppercase = false;
+                        option.Password.RequireLowercase = false;
+                    }
+)
+                .AddEntityFrameworkStores<SportEventContext>()
+                .AddDefaultTokenProviders();
+
 
             builder.Services.AddDbContext<SportEventContext>(options =>
             {
