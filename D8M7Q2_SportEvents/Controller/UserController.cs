@@ -1,4 +1,5 @@
-﻿using D8M7Q2_SportEvents.Entities.Dto.User;
+﻿using D8M7Q2_SportEvents.Data;
+using D8M7Q2_SportEvents.Entities.Dto.User;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -14,11 +15,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     [ApiController]
     public class UserController : ControllerBase
     {
-        UserManager<IdentityUser> userManager;
+        UserManager<AppUser> userManager;
         RoleManager<IdentityRole> roleManager;
         DtoProvider dtoProvider;
 
-        public UserController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, DtoProvider dtoProvider)
+        public UserController(UserManager<AppUser> userManager, RoleManager<IdentityRole> roleManager, DtoProvider dtoProvider)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -57,7 +58,9 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         [HttpPost("register")]
         public async Task Register(UserInputDto dto)
         {
-            var user = new IdentityUser(dto.UserName);
+            var user = new AppUser(dto.UserName);
+            user.FirstName = dto.FirstName;
+            user.LastName = dto.LastName;
             await userManager.CreateAsync(user, dto.Password);
             if (userManager.Users.Count() == 1)
             {

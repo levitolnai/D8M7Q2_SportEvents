@@ -1,4 +1,5 @@
-﻿using D8M7Q2_SportEvents.Entities.Dto.Competitor;
+﻿using D8M7Q2_SportEvents.Data;
+using D8M7Q2_SportEvents.Entities.Dto.Competitor;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,9 +13,9 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
     public class CompetitorController: ControllerBase
     {
         CompetitorLogic logic;
-        UserManager<IdentityUser> userManager;
+        UserManager<AppUser> userManager;
 
-        public CompetitorController(CompetitorLogic logic, UserManager<IdentityUser> userManager)
+        public CompetitorController(CompetitorLogic logic, UserManager<AppUser> userManager)
         {
             this.logic = logic;
             this.userManager = userManager;

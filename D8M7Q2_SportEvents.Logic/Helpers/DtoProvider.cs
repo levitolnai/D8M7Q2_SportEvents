@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.Competitor;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
@@ -14,10 +15,10 @@ namespace D8M7Q2_SportEvents.Logic.Helpers
 {
     public class DtoProvider
     {
-        UserManager<IdentityUser> userManager;
+        UserManager<AppUser> userManager;
         public Mapper Mapper { get; }
 
-        public DtoProvider(UserManager<IdentityUser> userManager)
+        public DtoProvider(UserManager<AppUser> userManager)
         {
             this.userManager = userManager;
             var config = new MapperConfiguration(cfg =>
@@ -36,7 +37,7 @@ namespace D8M7Q2_SportEvents.Logic.Helpers
                     }
                     
                 });
-                cfg.CreateMap<IdentityUser, UserViewDto>()
+                cfg.CreateMap<AppUser, UserViewDto>()
                 .AfterMap((src, dest) =>
                 {
                     dest.IsAdmin = userManager.IsInRoleAsync(src, "Admin").Result;
@@ -48,7 +49,8 @@ namespace D8M7Q2_SportEvents.Logic.Helpers
                 cfg.CreateMap<Competitor, CompetitorViewDto>()
                 .AfterMap((src, dest) =>
                 {
-                    dest.UserFullName = userManager.Users.First(u => u.Id == src.UserId).UserName!;
+                    var user = userManager.Users.First(u => u.Id == src.UserId);
+                    dest.UserFullName = user.LastName! + " " + user.FirstName;
                 });
             });
 

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using D8M7Q2_SportEvents.Logic;
 using System.Text;
 
 
@@ -27,7 +28,7 @@ namespace D8M7Q2_SportEvents
 
             //builder.Services.AddTransient<UserManager<IdentityUser>>();
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+            builder.Services.AddIdentity<AppUser, IdentityRole>(
                     option =>
                     {
                         option.Password.RequireDigit = false;

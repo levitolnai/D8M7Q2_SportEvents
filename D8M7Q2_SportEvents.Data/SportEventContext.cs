@@ -10,6 +10,8 @@ namespace D8M7Q2_SportEvents.Data
 
         public DbSet<Competitor> Competitors { get; set; }
 
+        public DbSet<AppUser> AppUsers { get; set; }
+
         public SportEventContext(DbContextOptions<SportEventContext> ctx)
             : base(ctx)
         {
