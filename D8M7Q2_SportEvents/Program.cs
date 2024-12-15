@@ -1,4 +1,7 @@
 
+using D8M7Q2_SportEvents.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace D8M7Q2_SportEvents
 {
     public class Program
@@ -8,6 +11,11 @@ namespace D8M7Q2_SportEvents
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<SportEventContext>(options =>
+            {
+                options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SportEventsDb;Trusted_Connection=True;TrustServerCertificate=True");
+            });
+
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace D8M7Q2_SportEvents.Entities
 {
@@ -11,9 +12,11 @@ namespace D8M7Q2_SportEvents.Entities
             Date = date;
             ApplicantLimit = applicantLimit;
         }
-
+        [StringLength(50)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string Id { get; set; }
-
+        [StringLength(60)]
         public string Title { get; set; }
 
         public string Date { get; set; }
