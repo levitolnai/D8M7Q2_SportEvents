@@ -29,5 +29,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         {
             return logic.GetAllSportEvents();
         }
+
+        [HttpDelete("{id}")]
+        public void DeleteSportEvent(string id)
+        {
+            logic.DeleteSportEvent(id);
+        }
     }
 }
