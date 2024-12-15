@@ -14,7 +14,9 @@ namespace D8M7Q2_SportEvents
 
             // Add services to the container.
             builder.Services.AddTransient(typeof(Repository<>));
+            builder.Services.AddTransient<DtoProvider>();
             builder.Services.AddTransient<SportEventLogic>();
+
             builder.Services.AddDbContext<SportEventContext>(options =>
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SportEventsDb;Trusted_Connection=True;TrustServerCertificate=True");

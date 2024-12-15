@@ -8,15 +8,17 @@ namespace D8M7Q2_SportEvents.Logic
     public class SportEventLogic
     {
         Repository<SportEvent> repo;
+        DtoProvider dtoProvider;
 
-        public SportEventLogic(Repository<SportEvent> repo)
+        public SportEventLogic(Repository<SportEvent> repo, DtoProvider dtoProvider)
         {
             this.repo = repo;
+            this.dtoProvider = dtoProvider;
         }
 
         public void AddSportEvent(SportEventCreateUpdateDto dto)
         {
-            SportEvent s = new SportEvent(dto.Title, dto.Description, dto.Date, dto.Location, dto.CompetitorLimit);
+            SportEvent s = dtoProvider.Mapper.Map<SportEvent>(dto);
             if (repo.GetAll().FirstOrDefault(x => x.Title == s.Title) == null)
             {
                 repo.Create(s);
@@ -29,15 +31,7 @@ namespace D8M7Q2_SportEvents.Logic
         public IEnumerable<SportEventShortViewDto> GetAllSportEvents()
         {
             return repo.GetAll().Select(x =>
-                new SportEventShortViewDto()
-                {
-                    Id = x.Id,
-                    Title = x.Title,
-                    Description = x.Description,
-                    Date = x.Date,
-                    Location = x.Location,
-                    CompetitorLimit = x.CompetitorLimit
-                }
+                dtoProvider.Mapper.Map<SportEventShortViewDto>(x)
             );
         }
         public void DeleteSportEvent(string id)
@@ -47,26 +41,13 @@ namespace D8M7Q2_SportEvents.Logic
         public void UpdateSportEvent(string id, SportEventCreateUpdateDto dto)
         {
             var old = repo.FindById(id);
-            old.Title = dto.Title;
-            old.Description = dto.Description;
-            old.Date = dto.Date;
-            old.Location = dto.Location;
-            old.CompetitorLimit = dto.CompetitorLimit;
+            dtoProvider.Mapper.Map(dto, old);
             repo.Update(old);
         }
         public SportEventViewDto GetSportEvent(string id)
         {
             var model = repo.FindById(id);
-            return new SportEventViewDto()
-            {
-                Id = model.Id,
-                Title = model.Title,
-                Description = model.Description,
-                Date = model.Date,
-                Location = model.Location,
-                CompetitorLimit = model.CompetitorLimit,
-                Competitors = model.Competitors
-            };
+            return dtoProvider.Mapper.Map<SportEventViewDto>(model);
         }
     }
 }
