@@ -1,6 +1,7 @@
 ﻿using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
+using D8M7Q2_SportEvents.Entities.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,19 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
-        public void AddSportEvent(SportEventCreateUpdateDto dto)
+        public IActionResult AddSportEvent(SportEventCreateUpdateDto dto)
         {
-            logic.AddSportEvent(dto);
+            try
+            {
+                logic.AddSportEvent(dto);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(new ErrorModel(e.Message));
+            }
+
+            return Ok();
+            
         }
 
         [HttpGet]

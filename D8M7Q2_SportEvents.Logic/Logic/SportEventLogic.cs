@@ -27,7 +27,7 @@ namespace D8M7Q2_SportEvents.Logic.Logic
             }
             else
             {
-                //todo throw exception
+                throw new ArgumentException("Már van ilyen esemény!");
             }
         }
         public IEnumerable<SportEventShortViewDto> GetAllSportEvents()
