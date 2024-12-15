@@ -36,7 +36,8 @@ namespace D8M7Q2_SportEvents
                         option.Password.RequireUppercase = false;
                         option.Password.RequireLowercase = false;
                     }
-)
+                )
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<SportEventContext>()
                 .AddDefaultTokenProviders();
 
