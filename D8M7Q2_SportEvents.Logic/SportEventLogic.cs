@@ -25,9 +25,18 @@ namespace D8M7Q2_SportEvents.Logic
                 //todo throw exception
             }
         }
-        public IEnumerable<SportEvent> GetAllSportEvents()
+        public IEnumerable<SportEventShortViewDto> GetAllSportEvents()
         {
-            return repo.GetAll();
+            return repo.GetAll().Select(x =>
+                new SportEventShortViewDto()
+                {
+                    Id = x.Id,
+                    Title = x.Title,
+                    Description = x.Description,
+                    Date = x.Date,
+                    CompetitorLimit = x.CompetitorLimit
+                }
+            );
         }
     }
 }

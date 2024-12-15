@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
 {
-    public class SportEventCreateDto
+    public class SportEventShortViewDto
     {
+        public string Id { get; set; } = "";
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
         public string Date { get; set; } = "";

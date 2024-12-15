@@ -25,7 +25,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpGet]
-        public IEnumerable<SportEvent> GetAllSportEvents()
+        public IEnumerable<SportEventShortViewDto> GetAllSportEvents()
         {
             return logic.GetAllSportEvents();
         }
