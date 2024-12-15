@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace D8M7Q2_SportEvents.Entities
 {
-    public class Competitor
+    public class Competitor: IIdEntity
     {
         public Competitor(string sportEventId, string name, string email, string phone)
         {

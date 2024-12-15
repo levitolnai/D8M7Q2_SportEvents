@@ -1,6 +1,7 @@
 
 using D8M7Q2_SportEvents.Data;
 using Microsoft.EntityFrameworkCore;
+using MovieClub.Data;
 
 namespace D8M7Q2_SportEvents
 {
@@ -11,6 +12,7 @@ namespace D8M7Q2_SportEvents
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddTransient(typeof(Repository<>));
             builder.Services.AddDbContext<SportEventContext>(options =>
             {
                 options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=SportEventsDb;Trusted_Connection=True;TrustServerCertificate=True");

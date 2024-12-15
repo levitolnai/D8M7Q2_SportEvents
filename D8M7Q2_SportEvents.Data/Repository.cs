@@ -1,12 +1,14 @@
-﻿using System;
+﻿using D8M7Q2_SportEvents.Data;
+using D8M7Q2_SportEvents.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace D8M7Q2_SportEvents.Data
+namespace MovieClub.Data
 {
-    public class Repository<T> where T : class
+    public class Repository<T> where T :class, IIdEntity
     {
         SportEventContext ctx;
 
@@ -14,6 +16,7 @@ namespace D8M7Q2_SportEvents.Data
         {
             this.ctx = ctx;
         }
+
         public void Create(T entity)
         {
             ctx.Set<T>().Add(entity);
@@ -22,8 +25,36 @@ namespace D8M7Q2_SportEvents.Data
 
         public T FindById(string id)
         {
-            return null;
-            //return ctx.Set<T>().First(t => t. == id);
+            return ctx.Set<T>().First(t => t.Id == id);
+        }
+
+        public void DeleteById(string id)
+        {
+            var entity = FindById(id);
+            ctx.Set<T>().Remove(entity);
+            ctx.SaveChanges();
+        }
+
+        public void Delete(T entity)
+        {
+            ctx.Set<T>().Remove(entity);
+            ctx.SaveChanges();
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            return ctx.Set<T>();
+        }
+
+        public void Update(T entity)
+        {
+            var old = FindById(entity.Id);
+            foreach (var prop in typeof(T).GetProperties())
+            {
+                prop.SetValue(old, prop.GetValue(entity));
+            }
+            ctx.Set<T>().Update(old);
+            ctx.SaveChanges();
         }
     }
 }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace D8M7Q2_SportEvents.Data.Migrations
 {
     [DbContext(typeof(SportEventContext))]
-    [Migration("20241215115704_base")]
+    [Migration("20241215124213_base")]
     partial class @base
     {
         /// <inheritdoc />
@@ -65,12 +65,17 @@ namespace D8M7Q2_SportEvents.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("ApplicantLimit")
+                    b.Property<int>("CompetitorLimit")
                         .HasColumnType("int");
 
                     b.Property<string>("Date")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Title")
                         .IsRequired()
