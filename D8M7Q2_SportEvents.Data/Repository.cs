@@ -1,5 +1,5 @@
 ﻿using D8M7Q2_SportEvents.Data;
-using D8M7Q2_SportEvents.Entities;
+using D8M7Q2_SportEvents.Entities.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace D8M7Q2_SportEvents.Entities
+namespace D8M7Q2_SportEvents.Entities.Helpers
 {
     public interface IIdEntity
     {
