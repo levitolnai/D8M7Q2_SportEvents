@@ -2,9 +2,12 @@ using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Endpoint.Helpers;
 using D8M7Q2_SportEvents.Logic.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 
 namespace D8M7Q2_SportEvents
@@ -36,6 +39,24 @@ namespace D8M7Q2_SportEvents
                 .AddEntityFrameworkStores<SportEventContext>()
                 .AddDefaultTokenProviders();
 
+            builder.Services.AddAuthentication(option =>
+            {
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(options =>
+            {
+                options.SaveToken = true;
+                options.RequireHttpsMetadata = true;
+                options.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidAudience = "movieclub.com",
+                    ValidIssuer = "movieclub.com",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("NagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcsNagyonhosszútitkosítókulcs"))
+                };
+            }); ;
 
             builder.Services.AddDbContext<SportEventContext>(options =>
             {
@@ -72,6 +93,7 @@ namespace D8M7Q2_SportEvents
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

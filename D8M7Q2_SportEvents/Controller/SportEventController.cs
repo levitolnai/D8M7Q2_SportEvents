@@ -3,6 +3,7 @@ using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
 using D8M7Q2_SportEvents.Entities.Helpers;
 using D8M7Q2_SportEvents.Logic.Logic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace D8M7Q2_SportEvents.Endpoint.Controller
@@ -19,6 +20,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
+        [Authorize]
         public void AddSportEvent(SportEventCreateUpdateDto dto)
         {
 
@@ -33,18 +35,21 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public void DeleteSportEvent(string id)
         {
             logic.DeleteSportEvent(id);
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public void UpdateSportEvent(string id, [FromBody] SportEventCreateUpdateDto dto)
         {
             logic.UpdateSportEvent(id, dto);
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public SportEventViewDto GetSportEvent(string id)
         {
             return logic.GetSportEvent(id);
