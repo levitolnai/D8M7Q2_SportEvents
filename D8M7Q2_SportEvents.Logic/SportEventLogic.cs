@@ -34,6 +34,7 @@ namespace D8M7Q2_SportEvents.Logic
                     Title = x.Title,
                     Description = x.Description,
                     Date = x.Date,
+                    Location = x.Location,
                     CompetitorLimit = x.CompetitorLimit
                 }
             );

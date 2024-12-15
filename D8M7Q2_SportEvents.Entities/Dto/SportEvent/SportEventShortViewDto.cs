@@ -12,6 +12,7 @@ namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";
         public string Date { get; set; } = "";
+        public string Location { get; set; } = "";
         public int CompetitorLimit { get; set; }
     }
 }
