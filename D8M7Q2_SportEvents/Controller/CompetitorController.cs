@@ -16,7 +16,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
-        public void AddRating(CompetitorCreateDto dto)
+        public void AddCompetitor(CompetitorCreateDto dto)
         {
             logic.AddCompetitor(dto);
         }

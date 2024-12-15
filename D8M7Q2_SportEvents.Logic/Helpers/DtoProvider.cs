@@ -19,6 +19,10 @@ namespace D8M7Q2_SportEvents.Logic.Helpers
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<SportEvent, SportEventShortViewDto>();
+                //.AfterMap((src, dest) =>
+                //{
+                //    dest.CompetitorCount = src.Competitors?.Count ?? 0;
+                //});
                 cfg.CreateMap<SportEvent, SportEventViewDto>();
                 cfg.CreateMap<SportEventCreateUpdateDto, SportEvent>();
                 cfg.CreateMap<CompetitorCreateDto, Competitor>();

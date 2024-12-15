@@ -23,8 +23,19 @@ namespace D8M7Q2_SportEvents.Logic.Logic
 
         public void AddCompetitor(CompetitorCreateDto dto)
         {
+            int competitorCount = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Count();
+            int competitorLimit = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Select(x => x.SportEvent.CompetitorLimit).FirstOrDefault();
             var model = dtoProvider.Mapper.Map<Competitor>(dto);
-            repo.Create(model);
+            if (competitorCount < competitorLimit)
+            {
+                repo.Create(model);
+            }
+            else
+            {
+                //todo throw exception
+            }
+
+
         }
     }
 }

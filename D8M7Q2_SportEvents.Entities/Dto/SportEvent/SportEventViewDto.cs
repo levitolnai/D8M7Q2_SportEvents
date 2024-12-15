@@ -20,5 +20,6 @@ namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
         public IEnumerable<CompetitorViewDto>? Competitors { get; set; }
 
         public int CompetitorCount => Competitors?.Count() ?? 0;
+
     }
 }
