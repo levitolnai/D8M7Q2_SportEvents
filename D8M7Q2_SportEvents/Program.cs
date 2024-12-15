@@ -1,6 +1,7 @@
 
 using D8M7Q2_SportEvents.Data;
-using D8M7Q2_SportEvents.Logic;
+using D8M7Q2_SportEvents.Logic.Helpers;
+using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.EntityFrameworkCore;
 using MovieClub.Data;
 

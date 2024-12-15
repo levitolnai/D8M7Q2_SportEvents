@@ -1,9 +1,10 @@
 ﻿using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
+using D8M7Q2_SportEvents.Logic.Helpers;
 using MovieClub.Data;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace D8M7Q2_SportEvents.Logic
+namespace D8M7Q2_SportEvents.Logic.Logic
 {
     public class SportEventLogic
     {

@@ -1,7 +1,7 @@
 ﻿using D8M7Q2_SportEvents.Data;
 using D8M7Q2_SportEvents.Entities;
 using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
-using D8M7Q2_SportEvents.Logic;
+using D8M7Q2_SportEvents.Logic.Logic;
 using Microsoft.AspNetCore.Mvc;
 using MovieClub.Data;
 

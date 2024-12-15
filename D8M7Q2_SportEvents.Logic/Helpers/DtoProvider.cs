@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace D8M7Q2_SportEvents.Logic
+namespace D8M7Q2_SportEvents.Logic.Helpers
 {
     public class DtoProvider
     {

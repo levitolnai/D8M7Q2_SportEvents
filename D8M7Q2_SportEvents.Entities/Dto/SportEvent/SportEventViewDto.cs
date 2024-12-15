@@ -15,7 +15,7 @@ namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
         public string Location { get; set; } = "";
         public int CompetitorLimit { get; set; }
 
-        public IEnumerable<Competitor>? Competitors { get; set; }
+        public IEnumerable<Entities.Competitor>? Competitors { get; set; }
 
         public int CompetitorCount => Competitors?.Count() ?? 0;
     }
