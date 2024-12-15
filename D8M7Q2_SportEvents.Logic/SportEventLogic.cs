@@ -25,5 +25,9 @@ namespace D8M7Q2_SportEvents.Logic
                 //todo throw exception
             }
         }
+        public IEnumerable<SportEvent> GetAllSportEvents()
+        {
+            return repo.GetAll();
+        }
     }
 }

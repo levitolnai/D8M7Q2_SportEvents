@@ -23,5 +23,11 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         {
             logic.AddSportEvent(dto);
         }
+
+        [HttpGet]
+        public IEnumerable<SportEvent> GetAllSportEvents()
+        {
+            return logic.GetAllSportEvents();
+        }
     }
 }
