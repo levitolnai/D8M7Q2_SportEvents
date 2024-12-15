@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace D8M7Q2_SportEvents.Entities.Dto.SportEvent
 {
-    public class SportEventCreateDto
+    public class SportEventCreateUpdateDto
     {
         public string Title { get; set; } = "";
         public string Description { get; set; } = "";

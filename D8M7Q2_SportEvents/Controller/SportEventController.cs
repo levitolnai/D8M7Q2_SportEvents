@@ -19,7 +19,7 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         }
 
         [HttpPost]
-        public void AddSportEvent(SportEventCreateDto dto)
+        public void AddSportEvent(SportEventCreateUpdateDto dto)
         {
             logic.AddSportEvent(dto);
         }
@@ -34,6 +34,12 @@ namespace D8M7Q2_SportEvents.Endpoint.Controller
         public void DeleteSportEvent(string id)
         {
             logic.DeleteSportEvent(id);
+        }
+
+        [HttpPut("{id}")]
+        public void UpdateSportEvent(string id, [FromBody] SportEventCreateUpdateDto dto)
+        {
+            logic.UpdateSportEvent(id, dto);
         }
     }
 }
