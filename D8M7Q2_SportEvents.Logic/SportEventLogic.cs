@@ -16,7 +16,14 @@ namespace D8M7Q2_SportEvents.Logic
         public void AddSportEvent(SportEventCreateDto dto)
         {
             SportEvent s = new SportEvent(dto.Title, dto.Description, dto.Date, dto.CompetitorLimit);
-            repo.Create(s);
+            if (repo.GetAll().FirstOrDefault(x => x.Title == s.Title) == null)
+            {
+                repo.Create(s);
+            }
+            else
+            {
+                //todo throw exception
+            }
         }
     }
 }
