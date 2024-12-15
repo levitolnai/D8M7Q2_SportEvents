@@ -1,4 +1,5 @@
 ﻿using D8M7Q2_SportEvents.Entities;
+using D8M7Q2_SportEvents.Entities.Dto.SportEvent;
 using MovieClub.Data;
 
 namespace D8M7Q2_SportEvents.Logic
@@ -12,9 +13,10 @@ namespace D8M7Q2_SportEvents.Logic
             this.repo = repo;
         }
 
-        public void AddSportEvent()
+        public void AddSportEvent(SportEventCreateDto dto)
         {
-
+            SportEvent s = new SportEvent(dto.Title, dto.Description, dto.Date, dto.CompetitorLimit);
+            repo.Create(s);
         }
     }
 }

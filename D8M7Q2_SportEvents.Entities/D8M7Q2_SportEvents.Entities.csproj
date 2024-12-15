@@ -6,7 +6,5 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-	<ItemGroup>
-		<Folder Include="Dtos\" />
-	</ItemGroup>
+	
 </Project>
