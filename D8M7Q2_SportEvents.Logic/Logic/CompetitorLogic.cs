@@ -24,7 +24,6 @@ namespace D8M7Q2_SportEvents.Logic.Logic
 
         public void AddCompetitor(CompetitorCreateDto dto, string userId)
         {
-            ;
             int competitorCount = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Count();
             var s = repo.GetAll();
             int competitorLimit = repo.GetAll().Where(x => x.SportEventId == dto.SportEventId).Select(x => x.SportEvent.CompetitorLimit).FirstOrDefault();
